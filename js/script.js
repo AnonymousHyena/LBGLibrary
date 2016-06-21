@@ -273,7 +273,7 @@ function buildAndShowTutorialHTML (tut) {
     var htmlToInsertIntoMainPage = insertProperty(tutorialHtml, "video", tut);
 
     $ajaxUtils
-          .sendGetRequest("scripts/"+tut+".json", 
+          .sendGetRequest("videos/scripts/"+tut+".json", 
             function (request) {
               var name = request.text;
 
