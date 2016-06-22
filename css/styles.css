@@ -1,7 +1,7 @@
 body {
   font-size: 16px;
   color: #fff;
-  background-color: #113346;
+  background-color: #1973BE ;
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -14,8 +14,8 @@ body {
 
 #logo-img {
   background: url('../images/logo.jpg') no-repeat;
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 120px;
   margin: 10px 15px 10px 0;
   background-size: 100% 100%;
 }
@@ -25,7 +25,7 @@ body {
 }
 .navbar-brand h1 { /*Name*/
   font-family: 'Lora', serif;
-  color: #557c3e;
+  color: #1973BE ;
   font-size: 1.5em;
   text-transform: uppercase;
   font-weight: bold;
@@ -41,7 +41,7 @@ body {
   margin-top: 10px;
 }
 #nav-list a {
-  color: #557c3e;
+  color: #1973BE ;
   text-align: center;
 }
 #nav-list a:hover {
@@ -51,7 +51,7 @@ body {
   font-size: 1.8em;
 }
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
-  border: 1px solid #557c3e;/**/
+  border: 1px solid #1973BE ;/**/
 }
 .navbar-header button.navbar-toggle {
   clear: both;
