@@ -34,6 +34,16 @@ ajaxUtils.sendGetRequest =
     request.send(null); // for POST only
   };
 
+  ajaxUtils.sendPutRequest = 
+  function (url, data, callback) {
+    return jQuery.ajax({
+        url: url,
+        type: "PUT",
+        data: data,
+        success: callback
+    });
+  };
+
 
 // Only calls user provided 'responseHandler'
 // function if response is ready

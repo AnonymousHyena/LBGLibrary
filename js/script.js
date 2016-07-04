@@ -11,15 +11,14 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
 (function (global) {
 
-var dc = {};
+var lb = {};
 
 var homeHtmlUrl = "snippets/home-snippet.html";
-var allCategoriesUrl = 
-  "categories.json";
+var allCategoriesUrl = "categories.json";
+var allSimsURL = "categoriesS.json";
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
-var menuItemsUrl = 
-  "categories/";
+var menuItemsUrl = "categories/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 var tutorialHtml = "snippets/tutorial-snippet.html"
@@ -84,7 +83,6 @@ function buildAndShowHomeHTML (categories) {
     function (homeHtml) {
 
       var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
-      console.log(chosenCategoryShortName);
 
       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'"+chosenCategoryShortName+"'") ;
       
@@ -106,27 +104,46 @@ function chooseRandomCategory (categories) {
 
 
 // Load the menu categories view
-dc.loadTutorialCategories = function () {
+lb.loadTutorialCategories = function () {
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     allCategoriesUrl,
     buildAndShowCategoriesHTML);
 };
 
+lb.loadSimulationCategories = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    allSimsURL,
+    buildAndShowCategoriesHTML);
+};
+
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
-dc.loadMenuItems = function (categoryShort) {
+lb.loadMenuItems = function (categoryShort) {
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     menuItemsUrl + categoryShort+".json",
     buildAndShowMenuItemsHTML);
 };
 
-dc.loadTutorial = function (tut) {
+lb.loadTutorial = function (tut) {
   showLoading("#main-content");
     buildAndShowTutorialHTML(tut);
 };
+
+lb.loadContactPage = function(){
+  var data = {"id":"4","short_name":"T","name":"Test","desc":"Tutorials on how to use Gmail"};
+  showLoading("#main-content");
+  $ajaxUtils.sendPutRequest(
+   "categories.json",
+    data,function(result) {
+    // do something with the results of the AJAX call
+});
+ // buildAndShowContactlHTML();
+};
+
 
 
 // Builds HTML for the categories page based on the data
@@ -287,7 +304,7 @@ function buildAndShowTutorialHTML (tut) {
 }
 
 
-global.$dc = dc;
+global.$dc = lb;
 
 })(window);
 

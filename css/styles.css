@@ -80,7 +80,7 @@ body {
   box-shadow: 0 0 50px #0D3147;/**/
   border: 2px solid #0D3147;/**/
 }
-#menu-tile, #specials-tile {
+#menu-tile, #random-tile, #simulation-tile {
   height: 250px;
   width: 100%;
   margin-bottom: 15px;
@@ -88,18 +88,22 @@ body {
   border: 2px solid #0D3147;/**/
   overflow: hidden;
 }
-#menu-tile:hover, #specials-tile:hover, #map-tile:hover {
+#menu-tile:hover, #random-tile:hover, #simulation-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
 }
 #menu-tile {
   background: url('../images/menu-tile.jpg') no-repeat;
   background-position: center;
 }
-#specials-tile {
-  background: url('../images/specials-tile.jpg') no-repeat;
+#random-tile {
+  background: url('../images/random-tile.jpg') no-repeat;
   background-position: center;
 }
-#menu-tile span, #specials-tile span {
+#simulation-tile {
+  background: url('../images/simulation-tile.jpg') no-repeat;
+  background-position: center;
+}
+#menu-tile span, #simulation-tile span, #random-tile span {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -195,7 +199,7 @@ height:480px;
 }
 
 textarea{
-  background-color: #113346;
+  background-color: #1973BE;
   border: 0px;
   resize: none;
 }
