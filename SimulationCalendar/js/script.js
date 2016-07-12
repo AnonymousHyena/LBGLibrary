@@ -13,7 +13,7 @@ console.log(t);
 var temp=t/30;//
 month =month + parseInt(temp);
 day=day+(t%30);
-
+day=day-3; //xathike sti poreia
 document.addEventListener("DOMContentLoaded",function (){
 document.getElementById("time").innerHTML=day+"/"+month;
 setInterval(incDay, oneDay);
