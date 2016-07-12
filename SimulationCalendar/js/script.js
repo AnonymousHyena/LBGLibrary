@@ -23,7 +23,7 @@ function incDay(){
   day=day+1;
   if (day>30){
     month=month+1;
-    day = 0;
+    day = 1;
   }
 display(day,month);
 }
