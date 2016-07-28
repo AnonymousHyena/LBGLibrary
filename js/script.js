@@ -21,7 +21,8 @@ var categoryHtml = "snippets/category-snippet.html";
 var menuItemsUrl = "categories/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
-var tutorialHtml = "snippets/tutorial-snippet.html"
+var tutorialHtml = "snippets/tutorial-snippet.html";
+var aboutHtml = "snippets/about-snippet.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -102,6 +103,15 @@ function chooseRandomCategory (categories) {
   return categories[randomArrayIndex];
 }
 
+
+lb.loadAboutPage = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtml,
+    function(aboutHtml){
+       insertHtml("#main-content",aboutHtml);
+    },false);
+};
 
 // Load the menu categories view
 lb.loadTutorialCategories = function () {

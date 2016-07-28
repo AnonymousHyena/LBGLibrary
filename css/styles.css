@@ -77,15 +77,15 @@ body {
 
 /* HOME PAGE */
 .container .jumbotron {
-  box-shadow: 0 0 50px #0D3147;/**/
-  border: 2px solid #0D3147;/**/
+  box-shadow: 0 0 50px #0D3147;
+  border: 2px solid #0D3147;
 }
 #menu-tile, #random-tile, #simulation-tile {
   height: 250px;
   width: 100%;
   margin-bottom: 15px;
   position: relative;
-  border: 2px solid #0D3147;/**/
+  border: 2px solid #0D3147;
   overflow: hidden;
 }
 #menu-tile:hover, #random-tile:hover, #simulation-tile:hover {
