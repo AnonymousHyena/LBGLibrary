@@ -73,7 +73,9 @@ $ajaxUtils.sendGetRequest(
   true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 
-
+lb.contctUs = function(){
+  window.open('mailto:thessaloniki-it@best.eu.org?Subject=Yo%20Problemo');
+}
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {

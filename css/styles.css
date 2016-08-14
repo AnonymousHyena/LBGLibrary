@@ -62,12 +62,12 @@ body {
 /* FOOTER */
 .panel-footer {
   margin-top: 30px;
-  padding-top: 35px;
-  padding-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 15px;
   background-color: #222;
   border-top: 0;
-  line-height: 3;
-  font-size: 0.9em;
+  line-height: .8;
+  font-size: 0.8em;
 }
 .panel-footer div.row {
   margin-bottom: 35px;
@@ -76,11 +76,7 @@ body {
 
 
 /* HOME PAGE */
-.container .jumbotron {
-  box-shadow: 0 0 50px #0D3147;
-  border: 2px solid #0D3147;
-}
-#menu-tile, #random-tile, #simulation-tile {
+#tutorial-tile, #random-tile, #simulation-tile {
   height: 250px;
   width: 100%;
   margin-bottom: 15px;
@@ -88,11 +84,11 @@ body {
   border: 2px solid #0D3147;
   overflow: hidden;
 }
-#menu-tile:hover, #random-tile:hover, #simulation-tile:hover {
+#tutorial-tile:hover, #random-tile:hover, #simulation-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
 }
-#menu-tile {
-  background: url('../images/menu-tile.jpg') no-repeat;
+#tutorial-tile {
+  background: url('../images/tutorial-tile.jpg') no-repeat;
   background-position: center;
 }
 #random-tile {
@@ -103,7 +99,7 @@ body {
   background: url('../images/simulation-tile.jpg') no-repeat;
   background-position: center;
 }
-#menu-tile span, #simulation-tile span, #random-tile span {
+#tutorial-tile span, #simulation-tile span, #random-tile span {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -142,28 +138,28 @@ body {
   box-shadow: 0 1px 5px 1px #cccccc;
 }
 
-#menu-categories-title + div {
+#tutorial-categories-title + div {
   margin-bottom: 50px;
 }
 /* END CATEGORIES PAGE */
 
 /* SINGLE CATEGORY PAGE */
-.menu-item-tile {
+.tutorial-item-tile {
   margin-bottom: 25px;
 }
-.menu-item-tile hr {
+.tutorial-item-tile hr {
   width: 80%;
 }
-.menu-item-tile .menu-item-price {
+.tutorial-item-tile .tutorial-item-price {
   font-size: 1.1em;
   text-align: right;
   margin-top: -15px;
   margin-right: -15px;
 }
-.menu-item-tile .menu-item-price span {
+.tutorial-item-tile .tutorial-item-price span {
   font-size: .6em;
 }
-.menu-item-photo {
+.tutorial-item-photo {
   position: relative;
   border: 2px solid #0D3147; /**/
   overflow: hidden;
@@ -173,7 +169,7 @@ body {
   margin-bottom: 20px;
   max-width: 250px;
 }
-.menu-item-photo div {
+.tutorial-item-photo div {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -182,13 +178,13 @@ body {
   color:#0D3147;
   text-align: center;
 }
-.menu-item-description {
+.tutorial-item-description {
   padding-right: 30px;
 }
-h3.menu-item-title {
+h3.tutorial-item-title {
   margin: 0 0 10px;
 }
-.menu-item-details {
+.tutorial-item-details {
   font-size: .9em;
   font-style: italic;
 }
@@ -256,10 +252,10 @@ textarea{
     padding-top: 10px;
     font-size: 5vw; /* 1vw = 1% of viewport width */
   }
-  #collapsable-nav a { /* Collapsed nav menu text */
+  #collapsable-nav a { /* Collapsed nav tutorial text */
     font-size: 1.2em;
   }
-  #collapsable-nav a span { /* Collapsed nav menu glyph */
+  #collapsable-nav a span { /* Collapsed nav tutorial glyph */
     font-size: 1em;
     margin-right: 5px;
   }
@@ -283,15 +279,15 @@ textarea{
     margin-top: 30px;
     padding: 0;
   }
-  #menu-tile, #specials-tile {
+  #tutorial-tile, #specials-tile {
     width: 360px;
     margin: 0 auto 15px;
   }
 
-  .menu-item-photo {
+  .tutorial-item-photo {
     margin-right: auto;
   }
-  .menu-item-description {
+  .tutorial-item-description {
     text-align: center;;
   }
   #vid{
@@ -311,7 +307,7 @@ textarea{
   /* End Header */
   
   /* Home page */
-  #menu-tile, #specials-tile {
+  #tutorial-tile, #specials-tile {
     width: 280px;
     margin: 0 auto 15px;
   }
