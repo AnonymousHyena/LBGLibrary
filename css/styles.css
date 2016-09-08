@@ -5,7 +5,7 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
-/** HEADER **/
+/* HEADER */
 #header-nav {
   background-color: #2A2B2D;
   border-radius: 0;
@@ -188,7 +188,9 @@ h3.tutorial-item-title {
   font-size: .9em;
   font-style: italic;
 }
-/* END SINGLE CATEGORY PAGE */
+/** END SINGLE CATEGORY PAGE **/
+
+/* Single Video Page */
 #vid{
 width:720px;
 height:480px;
@@ -199,15 +201,10 @@ textarea{
   border: 0px;
   resize: none;
 }
-
+/*End single Video Page*/
 
 /********** Large devices only **********/
-@media (min-width: 1200px) {
-  .container .jumbotron {
-    background: url('../images/jumbotron_1200.jpg') no-repeat;
-    height: 675px;
-  }
-}
+@media (min-width: 1200px) {}
 
 /********** Medium devices only **********/
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -220,26 +217,13 @@ textarea{
   }
   /* End Header */
 
-  /* Home Page */
-  .container .jumbotron {
-    background: url('../images/jumbotron_992.jpg') no-repeat;
-    height: 558px;
-  }
-  /* End Home Page */
   textarea{
     width:100%;
-}
+  }
 }
 
 /********** Small devices only **********/
-@media (min-width: 768px) and (max-width: 991px) {
-  /* Home Page */
-  .container .jumbotron {
-    background: url('../images/jumbotron_768.jpg') no-repeat;
-    height: 432px;
-  }
-  /* End Home Page */
-}
+/*@media (min-width: 768px) and (max-width: 991px) {}*/
 
 /********** Extra small devices only **********/
 @media (max-width: 767px) {
@@ -275,11 +259,7 @@ textarea{
   /* End Footer */
 
   /* Home Page */
-  .container .jumbotron {
-    margin-top: 30px;
-    padding: 0;
-  }
-  #tutorial-tile, #specials-tile {
+  #tutorial-tile, #random-tile, #simulation-tile {
     width: 360px;
     margin: 0 auto 15px;
   }
@@ -296,18 +276,17 @@ textarea{
   }
 }
 
-
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
   /* Header */
-  .navbar-brand h1 { /* Restaurant name */
+  .navbar-brand h1 { /* Name */
     padding-top: 5px;
     font-size: 6vw;
   }
   /* End Header */
   
   /* Home page */
-  #tutorial-tile, #specials-tile {
+  #tutorial-tile, #random-tile, #simulation-tile{
     width: 280px;
     margin: 0 auto 15px;
   }
