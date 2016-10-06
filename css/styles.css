@@ -150,15 +150,7 @@ body {
 .tutorial-item-tile hr {
   width: 80%;
 }
-.tutorial-item-tile .tutorial-item-price {
-  font-size: 1.1em;
-  text-align: right;
-  margin-top: -15px;
-  margin-right: -15px;
-}
-.tutorial-item-tile .tutorial-item-price span {
-  font-size: .6em;
-}
+
 .tutorial-item-photo {
   position: relative;
   border: 2px solid #0D3147; /**/
