@@ -15,14 +15,16 @@ var lb = {};
 
 var homeHtmlUrl = "snippets/home-snippet.html";
 var allCategoriesUrl = "categories.json";
-var allSimsURL = "categoriesS.json";
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
+var simCategoriesTitleHtml = "snippets/simulation-categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
 var menuItemsUrl = "categories/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 var tutorialHtml = "snippets/tutorial-snippet.html";
+var simulationHtml = "snippets/simulation-snippet.html";
 var aboutHtml = "snippets/about-snippet.html";
+var type;
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -47,17 +49,33 @@ var insertProperty = function (string, propName, propValue) {
 }
 
 // Remove the class 'active' from home and switch to Menu button
-var switchMenuToActive = function () {
+var switchMenuToActive = function (buttonIndex) {
   // Remove 'active' from home button
   var classes = document.querySelector("#navHomeButton").className;
   classes = classes.replace(new RegExp("active", "g"), "");
   document.querySelector("#navHomeButton").className = classes;
 
+  var classes = document.querySelector("#navMenuTutButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navMenuTutButton").className = classes;
+
+  var classes = document.querySelector("#navMenuSimButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navMenuSimButton").className = classes;
+
+  var classes = document.querySelector("#navMenuAboutButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navMenuAboutButton").className = classes;
+
+  var menuSelector;
+  if (buttonIndex==1){menuSelector="#navMenuTutButton";}
+  else if (buttonIndex==2){menuSelector="#navMenuSimButton";}
+  else if (buttonIndex==3){menuSelector="#navMenuAboutButton";}
   // Add 'active' to menu button if not already there
-  classes = document.querySelector("#navMenuButton").className;
+  classes = document.querySelector(menuSelector).className;
   if (classes.indexOf("active") == -1) {
     classes += " active";
-    document.querySelector("#navMenuButton").className = classes;
+    document.querySelector(menuSelector).className = classes;
   }
 };
 
@@ -100,7 +118,8 @@ function buildAndShowHomeHTML (categories) {
 function chooseRandomCategory (categories) {
   // Choose a random index into the array (from 0 inclusively until array length (exclusively))
   var randomArrayIndex = Math.floor(Math.random() * categories.length);
-
+  if (categories[randomArrayIndex].type=="sim"){type="sim";}
+  else{type="tut";}
   // return category object with that randomArrayIndex
   return categories[randomArrayIndex];
 }
@@ -108,6 +127,7 @@ function chooseRandomCategory (categories) {
 
 lb.loadAboutPage = function () {
   showLoading("#main-content");
+  switchMenuToActive(3);
   $ajaxUtils.sendGetRequest(
     aboutHtml,
     function(aboutHtml){
@@ -118,44 +138,33 @@ lb.loadAboutPage = function () {
 // Load the menu categories view
 lb.loadTutorialCategories = function () {
   showLoading("#main-content");
+  type="tut";
   $ajaxUtils.sendGetRequest(
     allCategoriesUrl,
     buildAndShowCategoriesHTML);
 };
 
-lb.loadSimulationCategories = function () {
+lb.loadSimulationCategories = function () {//!
   showLoading("#main-content");
+  type="sim";
   $ajaxUtils.sendGetRequest(
-    allSimsURL,
-    buildAndShowCategoriesHTML);
+    allCategoriesUrl,
+    buildAndShowSimCategoriesHTML);
 };
-
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
-lb.loadMenuItems = function (categoryShort) {
+lb.loadMenuItems = function (categoryShort) {//!
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     menuItemsUrl + categoryShort+".json",
     buildAndShowMenuItemsHTML);
 };
 
-lb.loadTutorial = function (tut) {
+lb.loadSingle = function (vid,short,fvid) {
   showLoading("#main-content");
-    buildAndShowTutorialHTML(tut);
+  buildAndShowVidHTML(vid,short,fvid);
 };
-
-lb.loadContactPage = function(){
-  var data = {"id":"4","short_name":"T","name":"Test","desc":"Tutorials on how to use Gmail"};
-  showLoading("#main-content");
-  $ajaxUtils.sendPutRequest(
-   "categories.json",
-    data,function(result) {
-    // do something with the results of the AJAX call
-});
- // buildAndShowContactlHTML();
-};
-
 
 
 // Builds HTML for the categories page based on the data
@@ -170,12 +179,13 @@ function buildAndShowCategoriesHTML (categories) {
         categoryHtml,
         function (categoryHtml) {
           // Switch CSS class active to menu button
-          switchMenuToActive();
+          switchMenuToActive(1);
 
           var categoriesViewHtml = 
             buildCategoriesViewHtml(categories, 
                                     categoriesTitleHtml,
-                                    categoryHtml);
+                                    categoryHtml,
+                                    "tut");
           insertHtml("#main-content", categoriesViewHtml);
         },
         false);
@@ -183,12 +193,36 @@ function buildAndShowCategoriesHTML (categories) {
     false);
 }
 
+function buildAndShowSimCategoriesHTML(categories) {
+  // Load title snippet of categories page
+  $ajaxUtils.sendGetRequest(
+    simCategoriesTitleHtml,
+    function (simCategoriesTitleHtml) {
+      // Retrieve single category snippet
+      $ajaxUtils.sendGetRequest(
+        categoryHtml,
+        function (categoryHtml) {
+          // Switch CSS class active to menu button
+          switchMenuToActive(2);
+
+          var categoriesViewHtml = 
+            buildCategoriesViewHtml(categories, 
+                                    simCategoriesTitleHtml,
+                                    categoryHtml,
+                                    "sim");
+          insertHtml("#main-content", categoriesViewHtml);
+        },
+        false);
+    },
+    false);
+}
 
 // Using categories data and snippets html
 // build categories view HTML to be inserted into page
 function buildCategoriesViewHtml(categories, 
                                  categoriesTitleHtml,
-                                 categoryHtml) {
+                                 categoryHtml,
+                                 type) {
   
   var finalHtml = categoriesTitleHtml;
   finalHtml += "<section class='row'>";
@@ -196,6 +230,7 @@ function buildCategoriesViewHtml(categories,
   // Loop over categories
   for (var i = 0; i < categories.length; i++) {
     // Insert category values
+    if(categories[i].type != type){continue;}
     var html = categoryHtml;
     var name = "" + categories[i].name;
     var short_name = categories[i].short_name;
@@ -226,12 +261,12 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
         menuItemHtml,
         function (menuItemHtml) {
           // Switch CSS class active to menu button
-          switchMenuToActive();
-          
+          if(type=="tut"){switchMenuToActive(1);}
+          else{switchMenuToActive(2);}  
           var menuItemsViewHtml = 
             buildMenuItemsViewHtml(categoryMenuItems, 
-                                   menuItemsTitleHtml,
-                                   menuItemHtml);
+                                    menuItemsTitleHtml,
+                                    menuItemHtml);
           insertHtml("#main-content", menuItemsViewHtml);
         },
         false);
@@ -264,6 +299,10 @@ function buildMenuItemsViewHtml(categoryMenuItems,
   for (var i = 0; i < menuItems.length; i++) {
     // Insert menu item values
     var html = menuItemHtml;
+    html =
+      insertProperty(html, "url", menuItems[i].url);//vid url
+    html =
+      insertProperty(html, "furl", menuItems[i].furl);//feedback vid url
     html = 
       insertProperty(html, "short_name", menuItems[i].short_name);
     html = 
@@ -293,30 +332,41 @@ function buildMenuItemsViewHtml(categoryMenuItems,
 }
 
 
-function buildAndShowTutorialHTML (tut) {
+function buildAndShowVidHTML (vid,short,fvid) {
+  if(type=="tut"){
+    $ajaxUtils.sendGetRequest(
+      tutorialHtml,
+      function (tutorialHtml) {
 
-  $ajaxUtils.sendGetRequest(
-    tutorialHtml,
-    function (tutorialHtml) {
+      var htmlToInsertIntoMainPage = insertProperty(tutorialHtml, "video", vid);
 
-    var htmlToInsertIntoMainPage = insertProperty(tutorialHtml, "video", tut);
+      $ajaxUtils
+            .sendGetRequest("videos/scripts/"+short+".json", 
+              function (request) {
+                var name = request.text;
 
-    $ajaxUtils
-          .sendGetRequest("videos/scripts/"+tut+".json", 
-            function (request) {
-              var name = request.text;
+                document.querySelector("#script")
+                  .innerHTML = name;
+              });
 
-              document.querySelector("#script")
-                .innerHTML = name;
-            });
+      insertHtml("#main-content",htmlToInsertIntoMainPage);
+      },
+      false);}
+  else{
+    $ajaxUtils.sendGetRequest(
+      simulationHtml,
+      function (simulationHtml) {
 
-    insertHtml("#main-content",htmlToInsertIntoMainPage);
-    },
-    false);
+      var htmlToInsertIntoMainPage = insertProperty(simulationHtml, "video", vid);
+      htmlToInsertIntoMainPage = insertProperty(htmlToInsertIntoMainPage, "fvideo", fvid);
+
+      insertHtml("#main-content",htmlToInsertIntoMainPage);
+      },
+      false);}
 }
 
 
-global.$dc = lb;
+global.$lb = lb;
 
 })(window);
 

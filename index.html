@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
   </head>
 <body>
   <header>
     <nav id="header-nav" class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.html" class="pull-left visible-md visible-lg">
+          <a href="index.html" class="pull-left visible-lg">
             <div id="logo-img" alt="Logo image"></div>
           </a>
 
@@ -37,16 +36,20 @@
               <a href="index.html">
                 <span class="glyphicon glyphicon-home"></span> Home</a>
             </li>
-            <li id="navMenuButton">
-              <a href="#" onclick="$dc.loadTutorialCategories();">
+            <li id="navMenuTutButton">
+              <a href="#" onclick="$lb.loadTutorialCategories();">
                 <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Tutorials</a>
             </li>
-            <li>
-              <a href="#" onclick="$dc.loadAboutPage();">
+            <li id="navMenuSimButton">
+              <a href="#" onclick="$lb.loadSimulationCategories();">
+                <span class="glyphicon glyphicon-comment"></span><br class="hidden-xs"> Simulations</a>
+            </li>
+            <li id="navMenuAboutButton">
+              <a href="#" onclick="$lb.loadAboutPage();">
                 <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> About</a>
             </li>
             <li>
-              <a href="#" onclick="$dc.contctUs();">
+              <a href="#" onclick="$lb.contctUs();">
                 <span class="glyphicon glyphicon-envelope"></span><br class="hidden-xs"> Contact Us</a>
             </li>
           </ul><!-- #nav-list -->

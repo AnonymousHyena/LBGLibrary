@@ -1,3 +1,8 @@
-{"items":[{"id":101,"short_name":"CT1","name":"Stathis","description":"Simulations on calling a company"}],
-"category":{"id":1,"short_name":"CT","name":"Calling Theory Simulations","desc":""}
+{"items":[{"id":101,"short_name":"CT1","name":"Sotiria","description":"Company: Michelin by Attila Akac","url":"KMv4CTvnvJ4","furl":"null"},
+{"id":102,"short_name":"CT2","name":"Charis","description":"Company: BETA by Georgia Karagianidou","url":"OkCi6B3uVQo","furl":"null"},
+{"id":103,"short_name":"CT3","name":"Christos","description":"Company: Redbull by Attila Akac","url":"ETg7Bu1awj4","furl":"null"},
+{"id":104,"short_name":"CT4","name":"Stathis","description":"Company: Michelin by Georgia Karagianidou","url":null,"furl":null},
+{"id":105,"short_name":"CT5","name":"Stelios","description":"Company: Michelin by Attila Akac","url":null,"furl":null},
+{"id":106,"short_name":"CT6","name":"Attila","description":"Company: Michelin by Georgia Karagianidou","url":null,"furl":null}],
+"category":{"id":1,"short_name":"CT","name":"Calling Theory Simulations","desc":"5-minute simulations on calling a company","type":"sim"}
 }

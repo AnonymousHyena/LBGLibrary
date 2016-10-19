@@ -14,7 +14,7 @@ body {
 
 #logo-img {
   background: url('../images/logo.jpg') no-repeat;
-  width: 100px;
+  width: 81px;
   height: 120px;
   margin: 10px 15px 10px 0;
   background-size: 100% 100%;
@@ -24,13 +24,12 @@ body {
   padding-top: 25px;
 }
 .navbar-brand h1 { /*Name*/
-  font-family: 'Lora', serif;
+  font-family: 'Oxygen', sans-serif;
   color: #1973BE ;
   font-size: 1.5em;
   text-transform: uppercase;
   font-weight: bold;
   text-shadow: 1px 1px 1px #222;
-  margin-top: 0;
   margin-bottom: 0;
   line-height: .75;
 }
@@ -55,7 +54,7 @@ body {
 }
 .navbar-header button.navbar-toggle {
   clear: both;
-  margin-top: -30px;
+  margin-top: -50px;
 }
 /* END HEADER */
 
@@ -214,7 +213,12 @@ textarea{
 }
 
 /********** Small devices only **********/
-/*@media (min-width: 768px) and (max-width: 991px) {}*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-nav>li>a{
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}
 
 /********** Extra small devices only **********/
 @media (max-width: 767px) {
@@ -272,7 +276,7 @@ textarea{
   /* Header */
   .navbar-brand h1 { /* Name */
     padding-top: 5px;
-    font-size: 6vw;
+    font-size: 5vw;
   }
   /* End Header */
   
@@ -280,6 +284,9 @@ textarea{
   #tutorial-tile, #random-tile, #simulation-tile{
     width: 280px;
     margin: 0 auto 15px;
+  }
+  button.navbar-toggle{
+    padding: 5px 6px;
   }
 
   .col-xxs-12 {
