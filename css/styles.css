@@ -221,6 +221,7 @@ textarea{
     padding-right: 8px;
     padding-left: 8px;
   }
+
 }
 
 /********** Extra small devices only **********/
@@ -275,6 +276,14 @@ textarea{
   textarea{
     width:100%;
   }
+
+  /*About Page*/
+.about-img{
+  margin: auto;
+}
+
+/*End About Page*/
+
 }
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
