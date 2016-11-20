@@ -113,6 +113,16 @@ body {
   color: #fff;
   opacity: .8;
 }
+
+#calendar-title{
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  opacity: .8;
+}
 /* END HOME PAGE */
 
 /* CATEGORIES PAGE */
@@ -277,11 +287,10 @@ textarea{
     width:100%;
   }
 
-  /*About Page*/
+/*About Page*/
 .about-img{
   margin: auto;
 }
-
 /*End About Page*/
 
 }

@@ -46,7 +46,7 @@ var insertProperty = function (string, propName, propValue) {
   string = string
     .replace(new RegExp(propToReplace, "g"), propValue);
   return string;
-}
+};
 
 // Remove the class 'active' from home and switch to Menu button
 var switchMenuToActive = function (buttonIndex) {
@@ -108,6 +108,12 @@ function buildAndShowHomeHTML (categories) {
       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'"+chosenCategoryShortName+"'") ;
       
       insertHtml("#main-content",homeHtmlToInsertIntoMainPage);
+
+      var monthNames = ["January", "February", "March", "April", "May", 
+      "June","July", "August", "September", "October", "November", "December"];
+
+      var d = new Date();
+      document.querySelector("#month").innerHTML=monthNames[d.getMonth()];
       
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
